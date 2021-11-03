@@ -42,4 +42,5 @@ for i in range(512):
     txtoutput = txtoutput + finout + "\n"
 
 print(txtoutput, file=open(r"C:\Users\keajacm\Documents\Digital\Lab_7\Lab_7.sim\sim_1\behav\xsim\testvectors.txt", "w"))
-#-  file location is set to directly change textvectors.txt source file from the verilog simulation folder
+#  r"..." for printing raw text output to file 
+#  file location is set to directly change textvectors.txt source file from the verilog simulation folder
