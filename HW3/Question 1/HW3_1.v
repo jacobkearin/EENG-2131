@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 11/16/2021 03:29:26 PM
-// Design Name: 
-// Module Name: HW3
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module HW3(clk, S0, S1, SP, AR, D, BUF_OUT, OUT, FB);
 input clk, S0, S1, SP, AR, D, BUF_OUT;
