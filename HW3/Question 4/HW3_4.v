@@ -28,6 +28,21 @@ always @(A, B, GTin, EQin, LTin) begin
 end
 endmodule
 
+
+
+module comparitor_8bit(A, B, GTin, EQin, LTin, GTout, EQout, LTout);
+input [7:0] A, B;
+input GTin, EQin, LTin;
+output reg GTout, EQout, LTout;
+wire GTint, EQint, LTint;
+
+comparitor_4bit comp1(A[3:0], B[3:0], GTin, EQin, LTin, GTint, EQint, LTint);
+comparitor_4bit comp2(A[7:4], B[7:4], GTint, EQint, LTint, GTout, EQout, LTout);
+
+endmodule
+
+
+
 module comparitor_tb;
 reg [3:0] A, B;
 reg GTin, EQin, LTin;
