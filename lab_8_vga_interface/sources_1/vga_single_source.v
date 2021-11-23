@@ -21,6 +21,7 @@
 
 
 module pixel_clock(clk, pixel_clock);
+    //takes input 100Mhz clock and returns 25Mhz output clock
 input clk;
 output pixel_clock = 1;
 reg pixel_clock;
@@ -43,6 +44,9 @@ pixel_clock dut (clock, output25mhz);
 endmodule
 
 module enhanced_sync_signals (clk, vsync, hsync, data_enable, vcount, hcount);
+    //vsync, hsynch - active high
+    //data_enable - active low
+    //vcount, hcount - 12 bit counter (0-639, 0-479) for current respective line/pixel location.
 input clk;
 output data_enable;
 output vsync;
@@ -79,8 +83,6 @@ reg [12:0] hcount = 0;
 assign data_enable = !(vdt && hdt);
 assign vsync = !vpw;
 assign hsync = !hpw;
-//assign vcount = vcountr;
-//assign hcount = hcountr;
 
 always @(posedge clk) begin
     vcounter <= vcounter +1;
@@ -128,7 +130,9 @@ end
 endmodule
 
 
-module enhanced_sync_output_tb;
+module enhanced_sync_output_tb; 
+    //testbench for the enhanced_sync_signals module
+    //run for at least 1 refresh period (16ms for 60hz iteration)
 reg clk = 0;
 wire vsync, hsync, data_enable;
 wire [12:0] vcount, hcount;
@@ -140,6 +144,9 @@ end
 enhanced_sync_signals dut(clk, vsync, hsync, data_enable, vcount, hcount);
 endmodule
 
+
+//working basys-3 implementation for using built-in switches as RGB controllers
+//sprite inclusive iteration not complete - WIP
 module switched_vga_fpga(clk, Hsync, Vsync, sw, vgaRed, vgaBlue, vgaGreen);
 input clk;
 input [15:0] sw;
