@@ -55,7 +55,7 @@ always @(posedge clk) begin
         s4: state <= enable ? (fwd ? s5 : s3) : s0;
         s5: state <= enable ? (fwd ? s6 : s4) : s0;
         s6: state <= enable ? (fwd ? s1 : s5) : s0;
-    endcase
+    endcase 
 end
 endmodule
 
@@ -103,8 +103,9 @@ output [5:0] JB;    // basys-3 JB0-6 for output signals to 3 phase transistor ar
 reg [31:0] freq_counter = 0;
 reg var_clk = 0;
 wire [15:0] data;   
-parameter min_count = 510200;   // half of minimum frequency counter
-                                // 100Mhz clk / (2 * max_motor_freq)
+parameter min_count = 84996;    // minimum frequency counter
+                                // (100Mhz clk / (2 * max_motor_freq(hz))/6states = min_count
+                                // see excel file sheet 2 for details
 adc_controller dut0(clk, JXADC, data);
 
 always @(posedge clk) begin
