@@ -71,7 +71,7 @@ wire enable;
 wire ready;
 wire [15:0] data; 
 
-xadc_wiz_2  XLXI_7 (
+xadc_wiz_2  XLXI_7 (   
         .daddr_in(8'h1f),
         .dclk_in(CLK), 
         .den_in(enable), 
@@ -91,13 +91,13 @@ endmodule
 
 // main motor driver module
 // see schematic attached for circuit layout
-module main_driver (clk, JXADC, sw, JA, JB);
+module main_driver (clk, JXADC, sw, JA, JC);
 input clk;
 input [7:0] JXADC;
 input [15:0] sw;    // basys-3 {sw0, sw1} = enable, fwd
 input [7:0] JA;     // basys-3 JA0, JA1, JA2 for 3 bit hall sensors
                     // if no hall sensors, set value to 1'b000
-output [5:0] JB;    // basys-3 JB0-6 for output signals to 3 phase transistor array
+output [7:0] JC;    // basys-3 JB0-6 for output signals to 3 phase transistor array
                     // use of pull-up NMOS required for ABC positive inputs
 
 reg [31:0] freq_counter = 0;
@@ -116,7 +116,6 @@ always @(posedge clk) begin
     end
 end
 
-motor_driver dut1(var_clk, sw[0], sw[1], JB[0], JB[1], JB[2], JB[3], JB[4], JB[5], JA[2:0]);
+motor_driver dut1(var_clk, sw[0], sw[1], JC[0], JC[1], JC[2], JC[3], JC[4], JC[5], JA[2:0]);
 
 endmodule
-
