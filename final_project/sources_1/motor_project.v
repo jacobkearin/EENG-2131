@@ -19,7 +19,7 @@
 
 //module for creating motor driver signals
 //see motor datasheet
-module motor_driver(clk, enable, fwd, Apos, Aneg, Bpos, Bneg, Cpos, Cneg, hall);
+module motor_signals(clk, enable, fwd, Apos, Aneg, Bpos, Bneg, Cpos, Cneg, hall);
 input clk, enable, fwd; 
 input [2:0] hall;
 output Apos, Aneg, Bpos, Bneg, Cpos, Cneg; 
@@ -71,7 +71,7 @@ wire enable;
 wire ready;
 wire [15:0] data; 
 
-xadc_wiz_2  XLXI_7 (   
+xadc_wiz_2  XLXI_7 (
         .daddr_in(8'h1f),
         .dclk_in(CLK), 
         .den_in(enable), 
@@ -116,6 +116,6 @@ always @(posedge clk) begin
     end
 end
 
-motor_driver dut1(var_clk, sw[0], sw[1], JC[0], JC[1], JC[2], JC[3], JC[4], JC[5], JA[2:0]);
+motor_signals dut1(var_clk, sw[0], sw[1], JC[0], JC[1], JC[2], JC[3], JC[4], JC[5], JA[2:0]);
 
 endmodule
