@@ -1,3 +1,5 @@
+#  NEED TO UPDATE FILE LOCATION/NAME PRIOR TO RUNNING (LINE 46)
+
 txtoutput = ""
 for i in range(512):
     inputxy = bin(i)
@@ -41,6 +43,6 @@ for i in range(512):
 
     txtoutput = txtoutput + finout + "\n"
 
-print(txtoutput, file=open(r"C:\Users\keajacm\Documents\Digital\Lab_7\Lab_7.sim\sim_1\behav\xsim\testvectors.txt", "w"))
+print(txtoutput, file=open(r"C:\blah\blah\blah\filename.txt", "w")) #  UPDATE FILE LOCATION/NAME HERE
 #  r"..." for printing raw text output to file 
 #  file location is set to directly change textvectors.txt source file from the verilog simulation folder
