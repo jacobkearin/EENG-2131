@@ -1,4 +1,4 @@
-#  NEED TO UPDATE FILE LOCATION/NAME PRIOR TO RUNNING (LINE 46)
+#  NEED TO UPDATE FILE LOCATION PRIOR TO RUNNING (LINE 46)
 
 txtoutput = ""
 for i in range(512):
@@ -43,6 +43,6 @@ for i in range(512):
 
     txtoutput = txtoutput + finout + "\n"
 
-print(txtoutput, file=open(r"C:\blah\blah\blah\filename.txt", "w")) #  UPDATE FILE LOCATION/NAME HERE
+print(txtoutput, file=open(r"C:\blah\blah\blah\testvectors.txt", "w")) #  UPDATE FILE LOCATION HERE
 #  r"..." for printing raw text output to file 
 #  file location is set to directly change textvectors.txt source file from the verilog simulation folder
