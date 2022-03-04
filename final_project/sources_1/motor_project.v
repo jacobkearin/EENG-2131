@@ -61,7 +61,7 @@ endmodule
 
 
 //module for taking adc input from potentiometer for speed control
-//outputs a 16 bit value with most significant 12 bits being and output
+//outputs a 16 bit value with most significant 12 bits being ADC output
 module adc_controller(CLK, jxADC, data_out);
 input CLK;
 input [6:0] jxADC;
@@ -96,7 +96,7 @@ input clk;
 input [7:0] JXADC;
 input [15:0] sw;    // basys-3 {sw0, sw1} = enable, fwd
 input [7:0] JA;     // basys-3 JA0, JA1, JA2 for 3 bit hall sensors
-                    // if no hall sensors, set value to 1'b000
+                    // if no hall sensors, set value to 3'b000
 output [7:0] JC;    // basys-3 JB0-6 for output signals to 3 phase transistor array
                     // use of pull-up NMOS required for ABC positive inputs
 
